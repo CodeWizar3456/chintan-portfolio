@@ -1,105 +1,99 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chintan Limbachiya | Video Editor</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #f1f1f1;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header, section, footer {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    header {
-      background-color: #1e1e1e;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    .tagline {
-      color: #0f0;
-      font-style: italic;
-    }
-    a {
-      color: #0af;
-      text-decoration: none;
-    }
-    .section-title {
-      border-bottom: 2px solid #444;
-      margin-bottom: 10px;
-      padding-bottom: 5px;
-      font-size: 1.5em;
-    }
-    .portfolio-links ul {
-      list-style: none;
-      padding: 0;
-    }
-    .portfolio-links li {
-      margin: 8px 0;
-    }
-    footer {
-      text-align: center;
-      border-top: 1px solid #333;
-      font-size: 0.9em;
-      margin-top: 40px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Chintan Limbachiya</h1>
-    <p class="tagline">Freelance Video Editor | Viral Reels | Trend Cuts | Memes with Impact</p>
-  </header>  <section>
-    <h2 class="section-title">About Me</h2>
-    <p>
-      I’m a freelance video editor with 4+ years of experience editing reels, memes,
-      and viral content. I specialize in fast-paced, engaging videos using Premiere Pro,
-      CapCut, and Final Cut Pro.
-    </p>
-  </section>  <section>
-    <h2 class="section-title">Portfolio</h2>
-    <p>Check out my best work:</p>
-    <div class="portfolio-links">
-      <ul>
-        <li><strong>Meme Reels</strong></li>
-        <li><strong>Trend Reels</strong></li>
-        <li><strong>VFX / Transitions</strong></li>
-        <li>
-          <a href="https://drive.google.com/drive/folders/11_173kdqMzb5Yk3_Fdx9xUz_jNArpsn4" target="_blank">
-            Google Drive Portfolio
-          </a>
-        </li>
-        <li>
-          Instagram Page: <a href="https://instagram.com/dank.mehona" target="_blank">@dank.mehona</a>
-        </li>
-      </ul>
+  <div class="calculator">
+    <input type="text" id="display" disabled />
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendValue('/')">÷</button>
+      <button onclick="appendValue('*')">×</button>
+      <button onclick="appendValue('-')">−</button>
+
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('+')">+</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="calculate()">=</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
     </div>
-  </section>  <section>
-    <h2 class="section-title">Tools & Skills</h2>
-    <ul>
-      <li>Editing Software: Premiere Pro, CapCut, Final Cut Pro</li>
-      <li>Meme Editing</li>
-      <li>Viral Trends</li>
-      <li>Short-form storytelling</li>
-      <li>Color grading & sound sync</li>
-      <li>YouTube Shorts / Instagram Reels / TikTok content</li>
-    </ul>
-  </section>  <section>
-    <h2 class="section-title">Contact Me</h2>
-    <p>📞 Phone: 9173456004</p>
-    <p>📧 Email: <a href="mailto:chintanlimbachiya444@gmail.com">chintanlimbachiya444@gmail.com</a></p>
-    <p>📸 Instagram: <a href="https://instagram.com/dank.mehona" target="_blank">@dank.mehona</a></p>
-  </section>  <footer>
-    &copy; 2025 Chintan Limbachiya | All rights reserved.
-  </footer>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+body {
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.calculator {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 20px;
+  width: 240px;
+}
+
+#display {
+  width: 100%;
+  height: 50px;
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  height: 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e5e7eb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #d1d5db;
+}
+function appendValue(val) {
+  document.getElementById("display").value += val;
+}
+
+function clearDisplay() {
+  document.getElementById("display").value = "";
+}
+
+function calculate() {
+  try {
+    const result = eval(document.getElementById("display").value);
+    document.getElementById("display").value = result;
+  } catch {
+    alert("Invalid input!");
+  }
+}
